@@ -69,8 +69,20 @@ public class JpaMain {
 */
 
 
-            Member member = em.find(Member.class, 3L);
+/*            Member member = em.find(Member.class, 3L);
             member.setName("UpdateMember");
+*/
+/*
+            Member member = new Member(200L, "Member200");
+            em.persist(member);
+
+            em.flush();
+
+            System.out.println("===========");
+*/
+            Member member = em.find(Member.class, 1L);
+            em.detach(member);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
