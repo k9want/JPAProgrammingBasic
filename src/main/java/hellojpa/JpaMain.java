@@ -80,8 +80,8 @@ public class JpaMain {
 
             System.out.println("===========");
 */
-            Member member = em.find(Member.class, 1L);
-            em.detach(member);
+//            Member member = em.find(Member.class, 1L);
+//            em.detach(member);
 
             tx.commit();
         } catch (Exception e) {
