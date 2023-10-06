@@ -9,26 +9,17 @@ import java.util.Date;
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String username;
+    public Long getId() {
+        return id;
+    }
 
-    private Integer age;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
-    private LocalDateTime timeStamp;
-
-    @Lob
-    private String description;
     public Member() {
     }
 
