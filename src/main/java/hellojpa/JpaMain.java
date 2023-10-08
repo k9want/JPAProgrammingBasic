@@ -83,7 +83,7 @@ public class JpaMain {
 //            Member member = em.find(Member.class, 1L);
 //            em.detach(member);
 
-            Team team = new Team();
+/*            Team team = new Team();
             team.setName("TeamA");
             em.persist(team);
 
@@ -96,8 +96,27 @@ public class JpaMain {
             Member findMember = em.find(Member.class, member.getId());
             Long findMemberTeamId = findMember.getTeamId();
             //연관관계가 없음
-            Team findTeam = em.find(Team.class, findMemberTeamId);
+            Team findTeam = em.find(Team.class, findMemberTeamId);*/
 
+            //변경 후 저장
+            Team team = new Team();
+            team.setName("NewTeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("newMemberA");
+            //바로 참조값 team 사용 그러면 JPA에서 알아서 외래키 찾아서 저장해준다.
+            member.setTeam(team);
+            em.persist(member);
+
+            //만약에 조회 쿼리를 보고 싶다면???
+            em.flush(); //쿼리 다 날려버리고
+            em.clear(); // 영속성 컨텍스트 다 지우면 된다. 1차 캐시가 비워져서 쿼리를 날려 조회할테니까
+
+            // 변경 후 조회
+            Member findMember = em.find(Member.class, member.getId());
+            Team findMemberTeam = findMember.getTeam();
+            System.out.println("findMemberTeam = " + findMemberTeam);
 
             tx.commit();
         } catch (Exception e) {
