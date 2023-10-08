@@ -83,6 +83,22 @@ public class JpaMain {
 //            Member member = em.find(Member.class, 1L);
 //            em.detach(member);
 
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeamId(team.getId());
+            em.persist(member);
+
+            //조회 식별자로 다시 조회, 객체 지향적인 방법이 아니다!
+            Member findMember = em.find(Member.class, member.getId());
+            Long findMemberTeamId = findMember.getTeamId();
+            //연관관계가 없음
+            Team findTeam = em.find(Team.class, findMemberTeamId);
+
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
