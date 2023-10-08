@@ -20,7 +20,7 @@ public class Member {
 
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
-    private Team Team;
+    private Team team;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class Member {
         this.username = username;
     }
 
-    public hellojpa.Team getTeam() {
-        return Team;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setTeam(hellojpa.Team team) {
-        Team = team;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

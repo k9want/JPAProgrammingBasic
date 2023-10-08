@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -115,8 +117,12 @@ public class JpaMain {
 
             // 변경 후 조회
             Member findMember = em.find(Member.class, member.getId());
-            Team findMemberTeam = findMember.getTeam();
-            System.out.println("findMemberTeam = " + findMemberTeam);
+
+            //양방향 매핑 후!
+            List<Member> findMemberTeam = findMember.getTeam().getMembers();
+            for (Member m : findMemberTeam) {
+                System.out.println("m = " + m.getUsername());
+            }
 
             tx.commit();
         } catch (Exception e) {
