@@ -126,7 +126,7 @@ public class JpaMain {
             */
 
 
-            //양방향 매핑시 가장 많이 하는 실수 - 연관관계의 주인에 값을 입력하지 않음
+/*            //양방향 매핑시 가장 많이 하는 실수 - 연관관계의 주인에 값을 입력하지 않음
             Team team = new Team();
             team.setName("TeamA");
             em.persist(team);
@@ -134,7 +134,7 @@ public class JpaMain {
             Member member = new Member();
             member.setUsername("Member1");
             em.persist(member);
-/*
+*//*
 
             // 역방향 (주인이 아닌 방향)에 연관관계 설정을 해버렸다.
             // 역방향 매핑 [가짜 매핑]은 읽기 전용이기에 값이 들어가지지 않는다.
@@ -142,9 +142,23 @@ public class JpaMain {
             // 연관관계의 주인에 값 설정할 것!
             member.setTeam(team);
             // 둘 다 쓰는게 좋은데 이를 하나로 묶어서 연관관계 편의 메서드를 생성해서 사용하는 것을 권장한다.
-*/
+*//*
 //            team.addMember(member);
-            member.changeTeam(team);
+            member.changeTeam(team);*/
+
+            Member member = new Member();
+            member.setUsername("member1");
+
+            em.persist(member);
+
+            Team team = new Team();
+            team.setName("teamA");
+
+            System.out.println("========================");
+            team.getMembers().add(member);
+
+            em.persist(team);
+
 
             tx.commit();
         } catch (Exception e) {

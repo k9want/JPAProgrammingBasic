@@ -2,7 +2,7 @@ package jpashop.domain;
 
 import jakarta.persistence.*;
 
-@Entity
+//@Entity
 public class Item {
 
     @Id
