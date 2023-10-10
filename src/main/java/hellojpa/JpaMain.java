@@ -146,7 +146,7 @@ public class JpaMain {
 //            team.addMember(member);
             member.changeTeam(team);*/
 
-            Member member = new Member();
+/*            Member member = new Member();
             member.setUsername("member1");
 
             em.persist(member);
@@ -157,7 +157,7 @@ public class JpaMain {
             System.out.println("========================");
             team.getMembers().add(member);
 
-            em.persist(team);
+            em.persist(team);*/
 
 
             tx.commit();
