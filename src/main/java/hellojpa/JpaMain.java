@@ -159,6 +159,20 @@ public class JpaMain {
 
             em.persist(team);*/
 
+            Movie movie = new Movie();
+            movie.setDirector("director");
+            movie.setActor("actor");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
+
+            em.persist(movie);
+
+            em.flush();
+            em.clear();
+
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
+
 
             tx.commit();
         } catch (Exception e) {
