@@ -3,11 +3,9 @@ package hellojpa;
 import jakarta.persistence.*;
 
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // 쓰지 말자!!
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn
+//@Entity
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn
 public abstract  class Item {
     @Id
     @GeneratedValue

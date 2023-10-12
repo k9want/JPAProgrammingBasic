@@ -4,9 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jpashop.domain.Member;
-import jpashop.domain.Order;
-import jpashop.domain.OrderItem;
+import jpashop.domain.*;
 
 public class Ex1Main {
     public static void main(String[] args) {
@@ -48,6 +46,18 @@ public class Ex1Main {
             em.persist(orderItem);
             */
 
+
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("Kim");
+
+            Album album = new Album();
+            album.setName("album1");
+            album.setArtist("artist");
+
+
+            em.persist(book);
+            em.persist(album);
 
             tx.commit();
         } catch (Exception e) {

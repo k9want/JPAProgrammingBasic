@@ -2,8 +2,8 @@ package jpashop.domain;
 
 import jakarta.persistence.*;
 
-//@Entity
-public class OrderItem {
+@Entity
+public class OrderItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ORDER_ITEM_ID")

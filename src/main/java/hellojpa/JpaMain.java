@@ -159,7 +159,7 @@ public class JpaMain {
 
             em.persist(team);*/
 
-            Movie movie = new Movie();
+/*            Movie movie = new Movie();
             movie.setDirector("director");
             movie.setActor("actor");
             movie.setName("바람과 함께 사라지다");
@@ -171,7 +171,7 @@ public class JpaMain {
             em.clear();
 
             Movie findMovie = em.find(Movie.class, movie.getId());
-            System.out.println("findMovie = " + findMovie);
+            System.out.println("findMovie = " + findMovie);*/
 
 
             tx.commit();
