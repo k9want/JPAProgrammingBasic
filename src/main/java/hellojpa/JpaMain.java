@@ -174,10 +174,30 @@ public class JpaMain {
             System.out.println("findMovie = " + findMovie);*/
 
 
+
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("Member20");
+            member.setTeam(team);
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            Member m = em.find(Member.class, member.getId());
+
+            System.out.println("m.getTeam().getClass() = " + m.getTeam().getClass());
+
+            System.out.println("============");
+            System.out.println(m.getTeam().getName());
+            System.out.println("============");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
-            System.out.println("catch??");
+            e.printStackTrace();
         } finally {
             em.close();
         }
