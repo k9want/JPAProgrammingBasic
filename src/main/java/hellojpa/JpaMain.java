@@ -210,6 +210,12 @@ public class JpaMain {
 //            cascade = CascadeType.ALL
             em.persist(parent);
 
+            em.flush();
+            em.clear();
+
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

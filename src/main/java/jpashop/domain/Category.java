@@ -7,7 +7,7 @@ import java.util.List;
 
 import static jakarta.persistence.FetchType.*;
 
-@Entity
+//@Entity
 public class Category extends BaseEntity {
     @Id
     @GeneratedValue

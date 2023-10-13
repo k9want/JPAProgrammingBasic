@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import static jakarta.persistence.FetchType.LAZY;
 
-@Entity
+//@Entity
 public class OrderItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
