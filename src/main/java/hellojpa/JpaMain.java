@@ -175,7 +175,7 @@ public class JpaMain {
 
 
 
-            Team team = new Team();
+/*            Team team = new Team();
             team.setName("TeamA");
             em.persist(team);
 
@@ -193,7 +193,23 @@ public class JpaMain {
 
             System.out.println("============");
             System.out.println(m.getTeam().getName());
-            System.out.println("============");
+            System.out.println("============");*/
+
+
+            Child child1 = new Child();
+            Child child2 = new Child();
+
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+//            em.persist(parent);
+//            em.persist(child1);
+//            em.persist(child2);
+
+//            cascade = CascadeType.ALL
+            em.persist(parent);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
