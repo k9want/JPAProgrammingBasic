@@ -195,7 +195,7 @@ public class JpaMain {
             System.out.println(m.getTeam().getName());
             System.out.println("============");*/
 
-
+/*
             Child child1 = new Child();
             Child child2 = new Child();
 
@@ -214,8 +214,14 @@ public class JpaMain {
             em.clear();
 
             Parent findParent = em.find(Parent.class, parent.getId());
-            findParent.getChildList().remove(0);
+            findParent.getChildList().remove(0);*/
 
+            Member member = new Member();
+            member.setUsername("MemberA");
+            member.setHomeAddress(new Address("city", "street", "zipcode"));
+            member.setWorkPeriod(new Period());
+
+            em.persist(member);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
