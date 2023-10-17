@@ -215,13 +215,30 @@ public class JpaMain {
 
             Parent findParent = em.find(Parent.class, parent.getId());
             findParent.getChildList().remove(0);*/
-
+/*
             Member member = new Member();
             member.setUsername("MemberA");
             member.setHomeAddress(new Address("city", "street", "zipcode"));
             member.setWorkPeriod(new Period());
 
+            em.persist(member);*/
+            Address address = new Address("city", "street", "zipcode");
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setHomeAddress(address);
             em.persist(member);
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            member2.setHomeAddress(address);
+            em.persist(member2);
+
+            //side effect 발생 - 값 타입은 여러 엔티티에서 공유하면 안된다.!
+            member.getHomeAddress().setCity("newCity");
+
+
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
