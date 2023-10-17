@@ -229,13 +229,19 @@ public class JpaMain {
             member.setHomeAddress(address);
             em.persist(member);
 
+            //member 수정하고 싶다면? 대신 통으로 갈아넣어야한다.
+            Address newAddress = new Address("Member1 - newCity", address.getStreet(), address.getZipcode());
+            member.setHomeAddress(newAddress);
+
+            Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
+
             Member member2 = new Member();
             member2.setUsername("member2");
-            member2.setHomeAddress(address);
+            member2.setHomeAddress(copyAddress);
             em.persist(member2);
 
-            //side effect 발생 - 값 타입은 여러 엔티티에서 공유하면 안된다.!
-            member.getHomeAddress().setCity("newCity");
+            // 값을 복사해서 사용
+//            member.getHomeAddress().setCity("newCity"); // 값 변경자체를 불가능하게
 
 
 
